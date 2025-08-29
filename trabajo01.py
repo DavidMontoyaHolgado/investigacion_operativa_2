@@ -17,15 +17,19 @@ def main():
 
     infinito = solver.infinity()
 
-    restriccion: pywraplp.Constraint =  solver.Constraint(-infinito, 2, "ct")
+    restriccion: pywraplp.Constraint =  solver.Constraint(-infinito, 2, "ct1")
     restriccion.SetCoefficient(x_var,1)
     restriccion.SetCoefficient(y_var,1)
-    print("Numero para la restriccion  = ", solver.NumConstraints())
+
+    restriccion2: pywraplp.Constraint = solver.Constraint(-infinito, 5, "ct2")
+    restriccion2.SetCoefficient(x_var,2)
+    restriccion2.SetCoefficient(y_var,-1)
+    print("Numero de restriccion  = ", solver.NumConstraints())
 
     #Funcion objetivo
     objetivo : pywraplp.Objective = solver.Objective()
-    objetivo.SetCoefficient(x_var,3)
-    objetivo.SetCoefficient(y_var,1)
+    objetivo.SetCoefficient(x_var,4)
+    objetivo.SetCoefficient(y_var,2)
     objetivo.SetMaximization()
 
     #Resolucion del problema
